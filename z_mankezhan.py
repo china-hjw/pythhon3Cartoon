@@ -62,20 +62,10 @@ def main(url):
     count = 0
     lenght = len(sel.find_all("li","j-chapter-item"))
     sater  = sel.find('div','de-chapter__title').find('span').string
-    state = 1 if sater == "完结" else 0
-    category = sel.find('div','comic-status').find('b').string
-    author = sel.find('div','comic-author').find('span','name').find('a').string
-    synopsis = sel.find('div','comic-intro').find('p','intro').string
-    #填表操作
-    sql = CartoonSql.CartoonSql().Cartoon(
-        name=title,
-        state=state,
-        category=category,
-        author=author,
-        synopsis=synopsis,
-        curl=url,
-        curl_type='z_mankezhan',
-    )
+    state = 1 if sater == "完结" else 0 #是否完结
+    category = sel.find('div','comic-status').find('b').string #分类
+    author = sel.find('div','comic-author').find('span','name').find('a').string #作者
+    synopsis = sel.find('div','comic-intro').find('p','intro').string #简介
 
     content = get_img(cove)
     cove_path = "public/Cartoon/%s" % (title)
