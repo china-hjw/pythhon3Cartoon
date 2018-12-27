@@ -68,15 +68,7 @@ def main(url):
             sel = BeautifulSoup(text, 'lxml')
             title = sel.find("div", 'wkboxr').find('b').string
             synopsis = sel.find("div", 'wikicon').find('p').string
-            sql = CartoonSql.CartoonSql().Cartoon(
-                name=title,
-                state=1,
-                category="猎奇",
-                author="admin",
-                synopsis=synopsis,
-                curl=a_url,
-                curl_type='z_lieqi',
-            )
+          
             list2s = sel.find_all("a", "album_link2")
             lenght = len(list2s) - 6
             count = 0
